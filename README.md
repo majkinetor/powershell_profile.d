@@ -9,10 +9,15 @@ This repository contains PowerShell profile with snippets organized in `profile.
 
 ## Installation
 
+Installation requires git client: `cinst git`.
+
 ```powershell
-$profile_dir = Split-Path $PROFILE
+$profile_repo = 'majkinetor/powershell_profile.d'    # <-- change this to repository you want to use
+
+$profile_dir  = Split-Path $PROFILE
 mkdir $profile_dir -ea 0
-git clone https://github.com/majkinetor/powershell_profile.d $profile_dir/profile.d
+git clone https://github.com/$profile_repo $profile_dir/profile.d
+
 '# set profile.d, see https://github.com/majkinetor/powershell_profile.d
 ls "$(Split-Path $profile)/profile.d/*.ps1" | % { . $_.FullName }
 ' | Out-File -Encoding ascii -Append $PROFILE
