@@ -1,0 +1,2 @@
+# Comment out or rename extension to .bak to see Warning messages
+$WarningPreference = 'silentlyContinue'
