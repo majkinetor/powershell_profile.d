@@ -8,7 +8,7 @@ function prompt
         if ($prp.IsInRole($adm)) { "(admin)" } 
     }
 
-    if (gcm RenameTab.cmd -ea 0) { RenameTab Split-Path $pwd -Leaf }
+    if (gcm RenameTab.cmd -ea 0) { RenameTab (Split-Path $pwd -Leaf) }
 
     $date   = Get-Date -Format "yy-MM-dd HH:mm:ss"
     $cmd_no = (history).length + 1
