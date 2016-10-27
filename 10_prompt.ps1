@@ -13,13 +13,16 @@ function prompt
     if (gcm git.exe -ea 0) {
         $gs = git status -sb 2>$null
         if ($gs){
-            $git = @{}
+            $git = @{ status = '[ clean ]' }
             $git.branch = $gs[0] -replace '## (.+?)\.\.\..+', '$1'
-            foreach ($file in ($gs | select -Skip 1).Trim()) {
-                $af = $file -split ' '
-                $git[ $af[0] ] += @(($af | select -skip 1) -join ' ')
+            $files = $gs | select -Skip 1
+            if ($files) {
+                foreach ($file in $files.Trim()) {
+                    $af = $file -split ' '
+                    $git[ $af[0] ] += @(($af | select -skip 1) -join ' ')
+                }
+                $git.status = " [ M:{0} D:{1} A:{2} ?:{3} ]" -f $git.M.Length, $git.D.Length, $git.A.Length, $git['??'].Length
             }
-            $git.status = " [ M:{0} D:{1} A:{2} ?:{3} ]" -f $git.M.Length, $git.D.Length, $git.A.Length, $git['??'].Length
         }
     }
 
