@@ -11,10 +11,12 @@ function prompt
     $lec = $LastExitCode
     #if (gcm RenameTab.cmd -ea 0) { RenameTab (Split-Path $pwd -Leaf) | out-null }
     if (gcm git.exe -ea 0) {
-        $gs = git status -sb 2>$null
+        [string[]]$gs = git status -sb 2>$null
         if ($gs){
             $git = @{ status = ' [ clean ]' }
             $git.branch = $gs[0] -replace '## (.+?)\.\.\..+', '$1'
+            $git.ahead = $gs[0] -replace '.+\[ahead (.+?)\].*', '$1'
+            if ($git.ahead -eq $gs[0]) {$git.ahead = '' }
             $files = $gs | select -Skip 1
             if ($files) {
                 foreach ($file in $files.Trim()) {
@@ -40,7 +42,7 @@ function prompt
     w "$pwd"      Green
     w " $(admin)" Yellow
     write-host
-    if ($git) { w $git.branch Red }
+    if ($git) { w "$($git.branch)~$($git.ahead)" Red }
     w ">"
 
     $LastExitCode = $lec
