@@ -13,7 +13,7 @@ function prompt
     if (gcm git.exe -ea 0) {
         $gs = git status -sb 2>$null
         if ($gs){
-            $git = @{ status = '[ clean ]' }
+            $git = @{ status = ' [ clean ]' }
             $git.branch = $gs[0] -replace '## (.+?)\.\.\..+', '$1'
             $files = $gs | select -Skip 1
             if ($files) {
