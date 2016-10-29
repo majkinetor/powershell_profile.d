@@ -8,3 +8,5 @@ $PSSessionOption = New-PSSessionOption -ProxyAccessType NoProxyServer
 
 #delete some aliases
 'wget', 'curl' | % { rm  Alias:\$_ -ea 0 }
+
+function tgit() { & "C:\Program Files\TortoiseGit\bin\TortoiseGitProc.exe" "/command:$args" /path:. }
