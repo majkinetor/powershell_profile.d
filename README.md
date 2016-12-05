@@ -19,10 +19,10 @@ mkdir $profile_dir -ea 0
 git clone https://github.com/$profile_repo $profile_dir/profile.d
 
 '# set profile.d, see https://github.com/majkinetor/powershell_profile.d
-ls "$(Split-Path $profile)/profile.d/*.ps1" | % { . $_.FullName }
+ls "$(Split-Path $profile)/profile.d/*.ps1" | % { . $_.FullName } # 3>$null
 ' | Out-File -Encoding ascii -Append $PROFILE
 ```
 
 ## Notes
 
-- To not see warnings add `$WarningPreference = 'SilentlyContinue'` after the comment and restore it back to `$WarningPreference = 'Continue'` after the scripts are loaded.
+- To not see warnings on the start uncomment `3>$null` in a profile.
