@@ -2,7 +2,7 @@ if (!(gcm git -ea 0)) { Write-Warning "Git profile: git is not found on path" }
 
 # Drive TortoiseGit via command line
 #https://tortoisegit.org/docs/tortoisegit/tgit-automation.html
-function tgit( $Command, $Path = '.' ) {
+function tgit( $Command='commit', $Path = '.' ) {
     if ($Path -eq '/') { $Path = git rev-parse --show-toplevel }
     & "$Env:ProgramFiles\TortoiseGit\bin\TortoiseGitProc.exe" "/command:$Command" "/path:$Path"
 }
