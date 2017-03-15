@@ -1,4 +1,4 @@
-if (!$profile_modules_path) { $profile_modules_path = "C:\Work\posh" }
+if (!$profile_modules_path) { $profile_modules_path = Resolve-Path "$PSScriptRoot\..\posh" }
 
 if (Test-Path $profile_modules_path) {
     $Env:PSModulePath += ";$profile_modules_path"
