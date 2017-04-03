@@ -8,7 +8,7 @@ if (Test-Path $tortoise_git_path) {
     # Ask for password in GUI (easier to see and automate)
     #https://marcus.handte.org/2011/09/07/enabling-interactive-prompts-in-cygwins-git-port/
     $ENV:GIT_ASKPASS  = "$tortoise_git_path\bin\sshaskpass.exe"
-}
+} else { Write-Warning "Git profile: TortoiseGit not found" }
 rm Variable:/tortoise_git_path
 
 # Set git editor
