@@ -12,12 +12,8 @@ This repository contains PowerShell profile with snippets organized in `profile.
 Installation requires git client: `cinst git`.
 
 ```powershell
-
 git clone https://github.com/majkinetor/powershell_profile.d
-
-"`n# set profile.d, see https://github.com/majkinetor/powershell_profile.d
-ls '$pwd\powershell_profile.d\*.ps1' | % { . `$_.FullName } # 3>`$null
-" | Out-File -Encoding ascii -Append $PROFILE
+gc powershell_profile.d\setup -raw | iex
 ```
 
 ## Notes
