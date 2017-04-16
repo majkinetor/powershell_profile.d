@@ -1,3 +1,4 @@
+# profile_modules_path could be set in $PROFILE
 if (!$profile_modules_path) { $profile_modules_path = Resolve-Path "$PSScriptRoot\..\posh" }
 
 if (Test-Path $profile_modules_path) {
