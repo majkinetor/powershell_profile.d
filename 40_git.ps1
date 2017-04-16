@@ -3,7 +3,11 @@ if (!(gcm git -ea 0)) { Write-Warning "Git profile: git is not found on path" }
 # Set TortoiseGit helpers
 $tortoise_git_path = "$Env:ProgramFiles\TortoiseGit"
 if (Test-Path $tortoise_git_path) {
-    . $PSScriptRoot\scripts\tgit.ps1
+    #. $PSScriptRoot\scripts\tgit.ps1
+    if (!(gcm tgit -ea 0)) { 
+	Write-Warning "tgit not found, installing via Powershell Gallery"
+	Install-Script tgit -Force 
+   }
 
     # Ask for password in GUI (easier to see and automate)
     #https://marcus.handte.org/2011/09/07/enabling-interactive-prompts-in-cygwins-git-port/
