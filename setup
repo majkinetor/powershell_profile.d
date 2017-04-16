@@ -1,6 +1,6 @@
 if ((gc $PROFILE -raw -ea 0) -match '\n# set profile\.d') {Write-Host 'profile.d was already set'; return}
 mkdir (Split-Path $Profile) | out-null
 "`n# set profile.d, see https://github.com/majkinetor/powershell_profile.d
-ls '$pwd\powershell_profile.d\*.ps1' | % { . `$_.FullName } # 3>`$null
+ls '$pwd\*.ps1' | % { . `$_.FullName } # 3>`$null
 " | Out-File -Encoding ascii -Append $PROFILE
 Write-Host 'profile.d set'

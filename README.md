@@ -9,11 +9,11 @@ This repository contains PowerShell profile with snippets organized in `profile.
 
 ## Installation
 
-Installation requires git client: `cinst git`.
+To install, execute the following script (requires git client):
 
 ```powershell
 git clone https://github.com/majkinetor/powershell_profile.d
-gc powershell_profile.d\setup -raw | iex
+cd powershell_profile.d; gc setup -raw | iex
 ```
 
 ## Notes
