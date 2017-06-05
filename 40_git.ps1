@@ -6,7 +6,7 @@ if (Test-Path $tortoise_git_path) {
     #. $PSScriptRoot\scripts\tgit.ps1
     if (!(gcm tgit -ea 0)) { 
 	Write-Warning "tgit not found, installing via Powershell Gallery"
-	Install-Script tgit -Force 
+	Install-Script tgit -Force -Scope AllUsers
    }
 
     # Ask for password in GUI (easier to see and automate)
