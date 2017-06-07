@@ -5,9 +5,12 @@ $tortoise_git_path = "$Env:ProgramFiles\TortoiseGit"
 if (Test-Path $tortoise_git_path) {
     #. $PSScriptRoot\scripts\tgit.ps1
     if (!(gcm tgit -ea 0)) { 
-	Write-Warning "tgit not found, installing via Powershell Gallery"
-	Install-Script tgit -Force -Scope AllUsers
-   }
+		Write-Warning "tgit not found, installing via Powershell Gallery"
+		Install-PackageProvider -Name NuGet -Force
+		Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+		Install-Script tgit -Force -Scope AllUsers
+		#Update-SessionEnvironment
+    }
 
     # Ask for password in GUI (easier to see and automate)
     #https://marcus.handte.org/2011/09/07/enabling-interactive-prompts-in-cygwins-git-port/
