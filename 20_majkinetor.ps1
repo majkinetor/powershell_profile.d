@@ -4,7 +4,7 @@ if (!$profile_modules_path) { $profile_modules_path = Resolve-Path "$PSScriptRoo
 if ($profile_modules_path -and (Test-Path $profile_modules_path)) {
     $Env:PSModulePath += ";$profile_modules_path"
     Write-Warning "Importing majkinetor's posh modules"
-    import-module mm_sugar, mm_network, mm_admin        #auto-load not working ?
+    #import-module mm_sugar, mm_network, mm_admin        #auto-load not working ?
     Set-AppKeyAliases *> $null
 } else {
     Write-Warning "majkinetor's modules not found at $(Resolve-Path $PSScriptRoot\..)\posh`n         git clone https://github.com/majkinetor/posh $profile_modules_path"
