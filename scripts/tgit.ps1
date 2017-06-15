@@ -8,6 +8,8 @@
 .PROJECTURI https://github.com/majkinetor/powershell_profile.d/blob/master/scripts/tgit.ps1 
 #>
 
+param($Command='commit', $Path='.')
+
 <# 
 .SYNOPSIS 
     Drive TortoiseGit via command line 
@@ -23,14 +25,18 @@
 .LINK 
     https://tortoisegit.org/docs/tortoisegit/tgit-automation.html 
 #> 
-param(
-    # TortoiseGit command
-    [ValidateSet('fetch', 'firststart', 'log', 'clone', 'commit', 'add', 'revert', 'cleanup', 'resolve', 'repocreate', 'switch', 'export', 'merge', 'settings', 'remove', 'rename', 'diff', 'showcompare', 'conflicteditor', 'help', 'repostatus', 'repobrowser', 'ignore', 'blame', 'cat', 'pull', 'push', 'rebase', 'stashsave', 'stashapply', 'stashpop', 'subadd', 'subupdate', 'subsync', 'reflog', 'refbrowse', 'updatecheck', 'revisiongraph', 'daemon', 'tag')]
-    [string] $Command='commit',
+function tgit {
+    param(
+        # TortoiseGit command
+        [ValidateSet('fetch', 'firststart', 'log', 'clone', 'commit', 'add', 'revert', 'cleanup', 'resolve', 'repocreate', 'switch', 'export', 'merge', 'settings', 'remove', 'rename', 'diff', 'showcompare', 'conflicteditor', 'help', 'repostatus', 'repobrowser', 'ignore', 'blame', 'cat', 'pull', 'push', 'rebase', 'stashsave', 'stashapply', 'stashpop', 'subadd', 'subupdate', 'subsync', 'reflog', 'refbrowse', 'updatecheck', 'revisiongraph', 'daemon', 'tag')]
+        [string] $Command='commit',
 
-    # Many commands require PATH argument. Special value '/' means root of the repository.
-    [string] $Path = '.'
-)
+        # Many commands require PATH argument. Special value '/' means root of the repository.
+        [string] $Path = '.'
+    )
 
-if ($Path -eq '/') { $Path = git rev-parse --show-toplevel }
-& "$Env:ProgramFiles\TortoiseGit\bin\TortoiseGitProc.exe" "/command:$Command" "/path:$Path"
+    if ($Path -eq '/') { $Path = git rev-parse --show-toplevel }
+    & "$Env:ProgramFiles\TortoiseGit\bin\TortoiseGitProc.exe" "/command:$Command" "/path:$Path"
+}
+
+ if ($MyInvocation.InvocationName -ne '.') { tgit -Command $Command -Path $Path }
