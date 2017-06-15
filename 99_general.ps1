@@ -13,3 +13,6 @@ $PSSessionOption = New-PSSessionOption -ProxyAccessType NoProxyServer
 # Delete some aliases that I actually use original tools
 'wget', 'curl' | % { rm  Alias:\$_ -ea 0 }
 
+# Force AU update
+function fup() { $global:au_force = $true; update}
+
