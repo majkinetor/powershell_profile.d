@@ -14,5 +14,5 @@ $PSSessionOption = New-PSSessionOption -ProxyAccessType NoProxyServer
 'wget', 'curl' | % { rm  Alias:\$_ -ea 0 }
 
 # Force AU update
-function fup() { $global:au_force = $true; update}
+function fup() { $global:au_force = $true; ./update.ps1}
 
