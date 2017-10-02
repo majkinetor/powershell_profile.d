@@ -1,5 +1,5 @@
 # Show menu on {Tab} ASAP
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+#Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Attach spawned intances to conemu
 if (Test-Path $Env:ProgramFiles\ConEmu) { & $Env:ProgramFiles\ConEmu\ConEmu\ConEmuC.exe /AUTOATTACH }
