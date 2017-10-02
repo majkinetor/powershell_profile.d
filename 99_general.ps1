@@ -16,3 +16,7 @@ $PSSessionOption = New-PSSessionOption -ProxyAccessType NoProxyServer
 # Force AU update
 function fup() { $global:au_force = $true; ./update.ps1}
 
+sal pester Invoke-Pester
+sal ib     Invoke-Build
+if (Test-Path $env:ChocolateyInstall\lib\invoke-build) { & "$env:ChocolateyInstall\lib\invoke-build\tools\Invoke-Build.ArgumentCompleters.ps1" }
+
