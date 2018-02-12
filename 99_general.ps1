@@ -27,5 +27,5 @@ if (Test-Path $env:ChocolateyInstall\lib\invoke-build) { & "$env:ChocolateyInsta
 function ibs{
     $toolsPath = Resolve-Path $env:ChocolateyInstall/lib/invoke-build/tools
     $s = $args[0]
-    & $toolsPath\$s.ps1
+    & $toolsPath\$s.ps1 $args[1..100]
 }
