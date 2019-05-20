@@ -23,9 +23,4 @@ sal pester Invoke-Pester
 sal ib     Invoke-Build
 if (Test-Path $env:ChocolateyInstall\lib\invoke-build) { & "$env:ChocolateyInstall\lib\invoke-build\tools\Invoke-Build.ArgumentCompleters.ps1" }
 
-# Make extra ib scripts usable
-function ibs{
-    $toolsPath = Resolve-Path $env:ChocolateyInstall/lib/invoke-build/tools
-    $s = $args[0]
-    & $toolsPath\$s.ps1 $args[1..100]
-}
+[System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor [System.Net.SecurityProtocolType]::Tls -bor [System.Net.SecurityProtocolType]::Ssl3
