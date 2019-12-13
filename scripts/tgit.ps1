@@ -28,7 +28,7 @@ param($Command='commit', $Path='.')
 function tgit {
     param(
         # TortoiseGit command
-        [ValidateSet('fetch', 'firststart', 'log', 'clone', 'commit', 'add', 'revert', 'cleanup', 'resolve', 'repocreate', 'switch', 'export', 'merge', 'settings', 'remove', 'rename', 'diff', 'showcompare', 'conflicteditor', 'help', 'repostatus', 'repobrowser', 'ignore', 'blame', 'cat', 'pull', 'push', 'rebase', 'stashsave', 'stashapply', 'stashpop', 'subadd', 'subupdate', 'subsync', 'reflog', 'refbrowse', 'updatecheck', 'revisiongraph', 'daemon', 'tag')]
+        [ValidateSet('fetch', 'firststart', 'log', 'clone', 'commit', 'add', 'revert', 'cleanup', 'resolve', 'repocreate', 'revisiongraph', 'switch', 'export', 'merge', 'settings', 'remove', 'rename', 'diff', 'showcompare', 'conflicteditor', 'help', 'repostatus', 'repobrowser', 'ignore', 'blame', 'cat', 'pull', 'push', 'rebase', 'stashsave', 'stashapply', 'stashpop', 'subadd', 'subupdate', 'subsync', 'reflog', 'refbrowse', 'updatecheck', 'revisiongraph', 'daemon', 'tag')]
         [string] $Command='commit',
 
         # Many commands require PATH argument. Special value '/' means root of the repository.
