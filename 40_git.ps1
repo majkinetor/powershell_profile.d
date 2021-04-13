@@ -12,5 +12,5 @@ if (Test-Path $tortoise_git_path) {
 rm Variable:/tortoise_git_path
 
 # Set git editor
-if (gcm gvim -ea 0) { $Env:GIT_EDITOR = 'gvim' } else { Write-Warning 'Git profile: gvim not found' }
-
+# if (gcm gvim -ea 0) { $Env:GIT_EDITOR = 'gvim' } else { Write-Warning 'Git profile: gvim not found' }
+$Env:GIT_EDITOR = 'code'
