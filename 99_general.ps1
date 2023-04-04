@@ -2,7 +2,7 @@
 #Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Attach spawned intances to conemu
-if (Test-Path $Env:ProgramFiles\ConEmu) { & $Env:ProgramFiles\ConEmu\ConEmu\ConEmuC.exe /AUTOATTACH }
+if (Test-Path $Env:ProgramFiles\ConEmu\ConEmuC.exe) { & $Env:ProgramFiles\ConEmu\ConEmu\ConEmuC.exe /AUTOATTACH }
 
 # Remove PSCX less helper, I already use my own less
 # if (gmo -List pscx) { ($Pscx:Preferences).PageHelpUsingLess = $false }
